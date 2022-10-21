@@ -31,14 +31,10 @@ export class ListComponent extends BaseComponent implements OnInit {
         messageType: MessageType.Error,
         position: Position.TopRight
       }))
+      console.log(allProducts);
     this.dataSource = new MatTableDataSource<List_Product>(allProducts.products);
     this.paginator.length= allProducts.totalCount;
   }
-  // delete(id, event){
-  //   const img: HTMLElement = event.srcElement;
-  //   alert(id);
-  //   $(img.parentElement.parentElement).fadeOut(2000);
-  // }
   async pageChanged(){
     await this.getProducts();
   }
