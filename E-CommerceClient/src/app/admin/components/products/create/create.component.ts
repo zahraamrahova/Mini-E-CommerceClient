@@ -20,12 +20,7 @@ export class CreateComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
   }
   @Output() createdProduct: EventEmitter<Create_Product>= new EventEmitter();
-  @Output() fileUploadOptions: Partial<FileUploadOptions>={
-    action:"upload",
-    controller:"products",
-    explanation: "Please choose or drag files..",
-    isAdminPage:true
-  };
+
   create(name: HTMLInputElement, stock: HTMLInputElement, price: HTMLInputElement) {
     this.showSpinner(SpinnerType.BallFussion);
     const create_product: Create_Product = new Create_Product();

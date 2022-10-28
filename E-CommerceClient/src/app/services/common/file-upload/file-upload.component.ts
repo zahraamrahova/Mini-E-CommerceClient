@@ -2,6 +2,8 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry } from 'ngx-file-drop';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
@@ -19,7 +21,8 @@ export class FileUploadComponent {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService:DialogService) {}
+    private dialogService:DialogService,
+    private spinner: NgxSpinnerService) {}
 
   public files: NgxFileDropEntry[];
   @Input() options: Partial<FileUploadOptions>;
@@ -37,6 +40,7 @@ export class FileUploadComponent {
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: ()=>{
+        this.spinner.show(SpinnerType.SquareLoader)
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
@@ -44,6 +48,7 @@ export class FileUploadComponent {
           headers: new HttpHeaders({"responseType": "blob"})
         }, fileData).subscribe(data=>{
           const message:string= "Files uploaded!";
+          this.spinner.hide(SpinnerType.SquareLoader)
             if(this.options.isAdminPage){
                 this.alertifyService.message(message, {
                     dismissOthers:true,
@@ -58,6 +63,7 @@ export class FileUploadComponent {
             }
         }, (errorResponse:HttpErrorResponse)=>{
           const message:string= "There is error during during Files uploaded!";
+          this.spinner.show(SpinnerType.SquareLoader)
           if(this.options.isAdminPage){
               this.alertifyService.message(message, {
                   dismissOthers:true,
@@ -77,18 +83,6 @@ export class FileUploadComponent {
 
   }
 
-  // openDialog(afterClose:any): void {
-  //   const dialogRef = this.dialog.open(FileUploadDialogComponent, {
-  //     width: '250px',
-  //     data: FileUploadDialogState.Yes,
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result==FileUploadDialogState.Yes){
-  //         afterClose();
-  //     }
-  //   });
-  // }
 }
 
 export class FileUploadOptions{
