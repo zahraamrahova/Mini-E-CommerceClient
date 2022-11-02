@@ -18,8 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     NgxFileDropModule,
     MatDialogModule,
-    MatButtonModule
-  
+    MatButtonModule, 
   ],
   exports: [
     FileUploadComponent
