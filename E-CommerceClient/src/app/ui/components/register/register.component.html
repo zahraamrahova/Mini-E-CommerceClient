@@ -1,0 +1,40 @@
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <form  [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+        <div class="mb-3">
+          <label for="nameSurname" class="form-label">Name Surname </label>
+          <input type="text"  formControlName="nameSurname" class="form-control" id="nameSurname" placeholder="Ad Soyad" [ngClass]="{'is-invalid': submitted && component.nameSurname.errors}">
+          <small  class="form-text invalid-feedback" *ngIf="submitted && component.nameSurname.errors?.required">Name and Surname are required</small>
+          <small  class="form-text invalid-feedback" *ngIf="submitted && (component.nameSurname.errors?.minlength||component.nameSurname.errors?.maxlength)">Please enter name surname between 3-50 characters</small>
+        </div>
+        <div class="mb-3">
+            <label for="userName" class="form-label">User Name  </label>
+            <input type="text"  formControlName="userName" class="form-control" id="userName" placeholder="User Name" [ngClass]="{'is-invalid': submitted && component.userName.errors}">
+            <small  class="form-text invalid-feedback" *ngIf="submitted && component.userName.errors?.required">User Name is required</small>
+            <small  class="form-text invalid-feedback" *ngIf="submitted && (component.userName.errors?.minlength||component.userName.errors?.maxlength)">Please enter  username between 3-50 characters</small>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address  </label>
+            <input type="email"  formControlName="email" class="form-control" id="email" placeholder="Email" [ngClass]="{'is-invalid': submitted && component.email.errors}">
+            <small  class="form-text invalid-feedback" *ngIf="submitted && component.email.errors?.required">Email is required</small>
+            <small  class="form-text invalid-feedback" *ngIf="submitted && (component.email.errors?.minlength||component.email.errors?.maxlength)">Please enter email between 3-50 characters</small>
+            <small  class="form-text invalid-feedback" *ngIf="submitted && component.email.errors?.email">Email is invalid</small>
+          </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && component.passwordrrors}">
+          <small  class="form-text invalid-feedback" *ngIf="submitted && component.password.errors?.required">Pasword is required</small>
+        </div>
+        <div class="mb-3">
+            <label for="passwordconfirmation" class="form-label">Password Confirmation</label>
+            <input type="password" formControlName="passwordConfirmation" class="form-control" id="passwordconfirmation" placeholder="Pasword confirmation" [ngClass]="{'is-invalid': submitted && component.passwordConfirmationerrors}">
+            <small  class="form-text invalid-feedback" *ngIf="submitted && component.passwordConfirmation.errors?.required">Pasword Confirmation is required</small>
+            <small *ngIf="submitted && frm.hasError('notSame')">Pasword Confirmation is not same with Password</small>
+          </div>
+          <br>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+</div>
+<div class="col-md-3"></div>
+</div>

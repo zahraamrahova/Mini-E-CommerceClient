@@ -41,6 +41,7 @@ export class FileUploadComponent {
       data: FileUploadDialogState.Yes,
       afterClosed: ()=>{
         this.spinner.show(SpinnerType.SquareLoader)
+        debugger;
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
@@ -62,8 +63,9 @@ export class FileUploadComponent {
                 })
             }
         }, (errorResponse:HttpErrorResponse)=>{
+          debugger;
           const message:string= "There is error during during Files uploaded!";
-          this.spinner.show(SpinnerType.SquareLoader)
+          this.spinner.hide(SpinnerType.SquareLoader)
           if(this.options.isAdminPage){
               this.alertifyService.message(message, {
                   dismissOthers:true,

@@ -27,8 +27,8 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
    }
    @Output() options : Partial<FileUploadOptions>={
     accept: ".png, .jpg, .gif, .jpeg",
-    action:"upload",
     controller: "products", 
+    action:"upload", 
     explanation: "Please choose product images",
     isAdminPage: true,
     queryString: `id=${this.data}`
