@@ -9,7 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadModule } from './services/common/file-upload/file-upload.module';
-
+import {JwtModule} from '@auth0/angular-jwt'
 
 
 @NgModule({
@@ -26,7 +26,12 @@ import { FileUploadModule } from './services/common/file-upload/file-upload.modu
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     HttpClientModule,
-
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: ()=>localStorage.getItem("accessToken"),
+        allowedDomains: ["localhost:7135"]
+      }
+    })
   ],
   providers: [{
     provide: "baseUrl", useValue: "https://localhost:7135/api", multi:true
