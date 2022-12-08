@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HttpClientModule } from '@angular/common/http';
-import { FileUploadModule } from './services/common/file-upload/file-upload.module';
 import {JwtModule} from '@auth0/angular-jwt'
 
 
@@ -19,10 +18,10 @@ import {JwtModule} from '@auth0/angular-jwt'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AdminModule,
     UiModule,
-    BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
     HttpClientModule,
