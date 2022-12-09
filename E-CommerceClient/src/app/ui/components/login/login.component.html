@@ -12,8 +12,9 @@
               <input #txtPassword type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
               <small  class="form-text invalid-feedback">Pasword is required</small>
             </div>
-              <br>
-            <button  (click)="login(txtUserNameOrEmail.value, txtPassword.value)" style="margin-top: -15px;" type="submit"  class="btn btn-primary">Login</button>
+            <br>
+            <asl-google-signin-button></asl-google-signin-button>
+            <button  (click)="login(txtUserNameOrEmail.value, txtPassword.value)" style="margin-top: 3px;" type="submit"  class="btn btn-primary">Login</button>
     </div>
     <div class="col-md-3"></div>
     </div>

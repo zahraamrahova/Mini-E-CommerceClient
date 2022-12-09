@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@abacritt/angularx-social-login": "^1.2.5",
     "@angular/animations": "^15.0.3",
     "@angular/cdk": "^14.2.4",
     "@angular/common": "^15.0.3",
@@ -36,7 +37,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.3",
-    "@angular/cli": "~15.0.3",
     "@angular/compiler-cli": "^15.0.3",
     "@types/jasmine": "~4.0.0",
     "@types/toastr": "^2.1.40",
